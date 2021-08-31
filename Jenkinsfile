@@ -48,6 +48,10 @@ pipeline {
            archiveArtifacts '**/*.jar' 
 	}
 	   }
-	 
-   }
+	stage ('Docker Build') {
+            steps {
+	    sh ...
+		cd ${WORKSPACE}
+		    docker build -t sravs927/test:v4
+		    ...
 }
