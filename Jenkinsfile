@@ -54,7 +54,6 @@ pipeline {
 		    sh '''
 		cd ${WORKSPACE}
 		    docker build -t sravs927/test:v4 .
-	           docker push sravs927/test:v4
 		    '''
 	}
 	}    
