@@ -52,7 +52,7 @@ pipeline {
             steps {
 		cd ${WORKSPACE}
 		    docker build -t sravs927/test:v4 .
-	           docker push stage sravs927/test:v4
+	           docker push sravs927/test:v4
 		    ...
 	}
 	}    
