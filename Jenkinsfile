@@ -63,9 +63,9 @@ pipeline {
     steps {
     script {
         withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://docker.io/" ]) {
-         sh '''
+         sh ''
 	 docker push docker.io/sravs927/test:v3
-	 '''
+	 ''
 	  }
         }
       }
