@@ -55,7 +55,7 @@ pipeline {
       agent any
       steps {
         sh '''
-	docker build -t sravs927/test:v3 /var/lib/jenkins/workspace/jest-pipeline/
+	docker build -t sravs927/test:v4 /var/lib/jenkins/workspace/jest-pipeline/
 	'''
       }
     }
@@ -64,8 +64,8 @@ pipeline {
     script {
         withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://docker.io/" ]) {
          sh '''
-	 docker tag sravs927/test:v2 sravs927/test:v3
-	 docker push docker.io/sravs927/test:v3
+	 docker tag sravs927/test:v3 sravs927/test:v4
+	 docker push docker.io/sravs927/test:v4
 	 '''
 	  }
         }
