@@ -62,7 +62,7 @@ pipeline {
 	    stage('Docker publish') {
     steps {
     script {
-        withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://hub.docker.com/" ]) {
+        withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://docker.io/" ]) {
          sh '''
 	 docker push sravs927/test:v3
 	 '''
