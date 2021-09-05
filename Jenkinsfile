@@ -49,15 +49,26 @@ pipeline {
 		
 	}
 	   }
-	   stage ('Docker Build') {
-            steps {
-		    sh '''
-		cd ${WORKSPACE}
-		    docker build -t sravs927/test:v4 .
-		    '''
-	}
-	}    
-	}
-}
-   
+	   
+	   
+	   stage('Docker Build') {
+      agent any
+      steps {
+        sh '''
+	docker build -t sravs927/test:v3 /var/lib/jenkins/workspace/jest-pipeline/
+	'''
+      }
+    }
+	    stage('Docker publish') {
+    steps {
+    script {
+        withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://hub.docker.com/" ]) {
+         sh '''
+	 docker push sravs927/test:v3
+	 '''
+	  }
+        }
+      }
+     }
+   }
 
