@@ -50,26 +50,22 @@ pipeline {
 	}
 	   }
 	   
-	   
-	   stage('Docker Build') {
-      agent any
-      steps {
+	stage('Docker Build') {
+    steps {
         sh '''
-	docker build -t sravs927/test:v4 /var/lib/jenkins/workspace/jest-pipeline/
+	docker build -t sravs927/test:v3 /var/lib/jenkins/workspace/docker-test/
 	'''
       }
     }
-	    stage('Docker publish') {
+ stage('Docker publish') {
     steps {
-    script {
-        withDockerRegistry([ credentialsId: "93fac9c6-48d6-438a-a815-ba2e20ddfc2b", url: "https://docker.io/" ]) {
-         sh '''
-	 docker tag sravs927/test:v3 sravs927/test:v4
-	 docker push docker.io/sravs927/test:v4
-	 '''
+      script {
+  withDockerRegistry(registry: [credentialsId: '93fac9c6-48d6-438a-a815-ba2e20ddfc2b']) {
+    sh 'docker push sravs927/test:v3'
+       }
 	  }
         }
       }
      }
    }
-}
+
