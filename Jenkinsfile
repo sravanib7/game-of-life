@@ -53,7 +53,7 @@ pipeline {
 	stage('Docker Build') {
     steps {
         sh '''
-	docker build -t sravs927/test:v3 /var/lib/jenkins/workspace/docker-test/
+	docker build -t sravs927/test:v3 /var/lib/jenkins/workspace/jest-pipeline/
 	'''
       }
     }
